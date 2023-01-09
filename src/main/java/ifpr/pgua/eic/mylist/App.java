@@ -1,38 +1,33 @@
 package ifpr.pgua.eic.mylist;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import ifpr.pgua.eic.mylist.controllers.TelaPrincipal;
+import ifpr.pgua.eic.mylist.utils.Navigator.BaseAppNavigator;
+import ifpr.pgua.eic.mylist.utils.Navigator.ScreenRegistryFXML;
 
-import java.io.IOException;
-
-/**
- * JavaFX App
- */
-public class App extends Application {
-
-    private static Scene scene;
+public class App extends BaseAppNavigator{
 
     @Override
-    public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("primary"), 640, 480);
-        stage.setScene(scene);
-        stage.show();
+    public void init() throws Exception {
+        super.init();
     }
 
-    static void setRoot(String fxml) throws IOException {
-        scene.setRoot(loadFXML(fxml));
+    @Override
+    public void stop() throws Exception {
+        super.stop();
     }
 
-    private static Parent loadFXML(String fxml) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
-        return fxmlLoader.load();
+    @Override
+    public String getHome() {
+        return "PRINCIPAL";
     }
 
-    public static void main(String[] args) {
-        launch();
+    @Override
+    public String getAppTitle() {
+        return "MyList";
     }
 
+    @Override
+    public void registrarTelas() {
+        registraTela("PRINCIPAL", new ScreenRegistryFXML(getClass(), "fxml/principal.fxml", (o)->new TelaPrincipal()));
+    }   
 }

@@ -1,13 +1,24 @@
 package ifpr.pgua.eic.mylist;
 
 import ifpr.pgua.eic.mylist.controllers.TelaPrincipal;
+import ifpr.pgua.eic.mylist.models.FabricaConexoes;
+import ifpr.pgua.eic.mylist.models.daos.FerramentaDAO;
+import ifpr.pgua.eic.mylist.models.daos.JDBCFerramentaDAO;
+import ifpr.pgua.eic.mylist.models.repositories.FerramentaRepository;
 import ifpr.pgua.eic.mylist.utils.Navigator.BaseAppNavigator;
 import ifpr.pgua.eic.mylist.utils.Navigator.ScreenRegistryFXML;
 
 public class App extends BaseAppNavigator{
 
+    private FerramentaDAO ferramentaDAO;
+    private FerramentaRepository ferramentaRepository;
+
     @Override
     public void init() throws Exception {
+
+        ferramentaDAO = new JDBCFerramentaDAO(FabricaConexoes.getInstance());
+        ferramentaRepository = new FerramentaRepository(ferramentaDAO);
+
         super.init();
     }
 

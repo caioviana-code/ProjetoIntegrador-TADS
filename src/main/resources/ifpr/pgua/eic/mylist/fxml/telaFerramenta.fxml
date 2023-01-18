@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+
+<VBox xmlns="http://javafx.com/javafx" 
+      xmlns:fx="http://javafx.com/fxml" 
+      prefHeight="600.0" prefWidth="1000.0"
+      fx:controller="ifpr.pgua.eic.mylist.controllers.TelaFerramenta"
+      >
+
+      <Label text="Nome:"/>
+      <TextField fx:id="tfNome"/>
+
+      <Label text="Estoque:"/>
+      <TextField fx:id="tfEstoque"/>
+
+      <Button fx:id="btCadastrar" text="Cadastrar" onAction="#cadastrar"/>
+      <Button fx:id="btLimpar" text="Limpar" onAction="#limpar"/>
+
+      <TableView>
+            <columns>
+                  <TableColumn fx:id="tbcNome" prefWidth="278.0" text="Nome"/>
+                  <TableColumn fx:id="tbcEstoque" prefWidth="278.0" text="Estoque"/>
+            </columns>
+      </TableView>
+
+      <padding>
+          <Insets topRightBottomLeft="10.0"/>
+      </padding>
+
+</VBox>

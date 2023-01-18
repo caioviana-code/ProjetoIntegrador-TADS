@@ -3,15 +3,18 @@ package ifpr.pgua.eic.mylist.controllers.viewmodels;
 import ifpr.pgua.eic.mylist.models.repositories.FerramentaRepository;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.ObservableList;
 
-public class CadastroFerramentaViewModel {
+public class TelaFerramentaViewModel {
     
     private StringProperty nomeProperty = new SimpleStringProperty();
     private StringProperty estoqueProperty = new SimpleStringProperty();
 
+    // private ObservableList
+
     private FerramentaRepository repository;
 
-    public CadastroFerramentaViewModel(FerramentaRepository repository) {
+    public TelaFerramentaViewModel(FerramentaRepository repository) {
         this.repository = repository;
     }
 

@@ -3,12 +3,13 @@ package ifpr.pgua.eic.mylist.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import ifpr.pgua.eic.mylist.controllers.viewmodels.CadastroFerramentaViewModel;
+import ifpr.pgua.eic.mylist.controllers.viewmodels.TelaFerramentaViewModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-public class TelaCadastroFerramenta extends BaseController implements Initializable {
+public class TelaFerramenta extends BaseController implements Initializable {
 
     @FXML
     private TextField tfNome;
@@ -16,9 +17,15 @@ public class TelaCadastroFerramenta extends BaseController implements Initializa
     @FXML 
     private TextField tfEstoque;
 
-    private CadastroFerramentaViewModel viewModel;
+    @FXML
+    private Button btCadastrar;
 
-    public TelaCadastroFerramenta(CadastroFerramentaViewModel viewModel) {
+    @FXML
+    private Button btLimpar;
+
+    private TelaFerramentaViewModel viewModel;
+
+    public TelaFerramenta(TelaFerramentaViewModel viewModel) {
         this.viewModel = viewModel;
     }
 

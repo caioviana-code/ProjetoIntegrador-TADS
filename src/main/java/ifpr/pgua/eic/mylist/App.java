@@ -1,6 +1,8 @@
 package ifpr.pgua.eic.mylist;
 
+import ifpr.pgua.eic.mylist.controllers.TelaFerramenta;
 import ifpr.pgua.eic.mylist.controllers.TelaPrincipal;
+import ifpr.pgua.eic.mylist.controllers.viewmodels.TelaFerramentaViewModel;
 import ifpr.pgua.eic.mylist.models.FabricaConexoes;
 import ifpr.pgua.eic.mylist.models.daos.FerramentaDAO;
 import ifpr.pgua.eic.mylist.models.daos.JDBCFerramentaDAO;
@@ -40,5 +42,6 @@ public class App extends BaseAppNavigator{
     @Override
     public void registrarTelas() {
         registraTela("PRINCIPAL", new ScreenRegistryFXML(getClass(), "fxml/principal.fxml", (o)->new TelaPrincipal()));
+        registraTela("FERRAMENTA", new ScreenRegistryFXML(getClass(), "fxml/telaFerramenta.fxml", (o)-> new TelaFerramenta(new TelaFerramentaViewModel(ferramentaRepository))));
     }   
 }

@@ -1,2 +1,12 @@
 Semana 09/01/2023 - 15/01/2023
 
+- Criação da classe modelo Ferramenta
+- Criação do DAO da classe Ferramenta
+- Criação do Repository da classe Ferramenta
+- Criação da ViewModel da tela de cadastro de uma Ferramenta
+- Criação da Tela de cadastro de Ferramenta
+- Integração com Banco de Dados funcionando perfeitamente
+
+Semana 16/01/2023 - 22/01/2023
+
+

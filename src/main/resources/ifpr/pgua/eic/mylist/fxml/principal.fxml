@@ -21,7 +21,7 @@
                </Label>
             </children>
          </Pane>
-         <Button  prefHeight="40.0" prefWidth="120.0" text="Ferramentas" />
+         <Button onAction="#carregarTelaFerramenta" prefHeight="40.0" prefWidth="120.0" text="Ferramentas" />
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>

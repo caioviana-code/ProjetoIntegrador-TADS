@@ -15,16 +15,20 @@
       fx:controller="ifpr.pgua.eic.mylist.controllers.TelaFerramenta"
       >
 
-      <Label text="Nome:"/>
-      <TextField fx:id="tfNome"/>
+      <HBox>
+            <Label alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="74.0" text="Nome:"/>
+            <TextField fx:id="tfNome"/>
 
-      <Label text="Estoque:"/>
-      <TextField fx:id="tfEstoque"/>
+            <Label alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="74.0" text="Estoque:"/>
+            <TextField fx:id="tfEstoque"/>
+      </HBox>
 
-      <Button fx:id="btCadastrar" text="Cadastrar" onAction="#cadastrar"/>
-      <Button fx:id="btLimpar" text="Limpar" onAction="#limpar"/>
+      <HBox>
+            <Button fx:id="btCadastrar" text="Cadastrar" onAction="#cadastrar"/>
+            <Button fx:id="btLimpar" text="Limpar" onAction="#limpar"/>
+      </HBox>
 
-      <TableView>
+      <TableView fx:id="tbFerramentas" prefHeight="424.0" prefWidth="800.0">
             <columns>
                   <TableColumn fx:id="tbcNome" prefWidth="278.0" text="Nome"/>
                   <TableColumn fx:id="tbcEstoque" prefWidth="278.0" text="Estoque"/>
@@ -32,7 +36,7 @@
       </TableView>
 
       <padding>
-          <Insets topRightBottomLeft="10.0"/>
+          <Insets topRightBottomLeft="20.0"/>
       </padding>
 
 </VBox>

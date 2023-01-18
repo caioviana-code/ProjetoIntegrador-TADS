@@ -12,15 +12,6 @@
 
    <left>
       <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="155.0" spacing="10.0">
-         <Pane prefHeight="78.0" prefWidth="135.0">
-            <children>
-               <Label layoutX="14.0" layoutY="27.0" text="Ferramentas">
-                  <font>
-                     <Font name="System Bold" size="20.0" />
-                  </font>
-               </Label>
-            </children>
-         </Pane>
          <Button onAction="#carregarTelaFerramenta" prefHeight="40.0" prefWidth="120.0" text="Ferramentas" />
          <BorderPane.margin>
             <Insets />

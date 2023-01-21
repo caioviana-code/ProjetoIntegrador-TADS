@@ -14,6 +14,7 @@ import ifpr.pgua.eic.mylist.models.results.Result;
 public class JDBCFerramentaDAO implements FerramentaDAO {
 
     private static final String SQL_INSERT = "INSERT INTO pi_ferramenta(nome,estoque) VALUES (?,?)";
+    private static final String SQL_UPDATE = "UPDATE pi_ferramenta SET nome=?, estoque=? WHERE id=?";
     private static final String SQL_SELECT_ALL = "SELECT * FROM pi_ferramenta";
 
     FabricaConexoes fabricaConexoes;
@@ -36,7 +37,30 @@ public class JDBCFerramentaDAO implements FerramentaDAO {
             prep_statement.close();
             con.close();
 
-            return Result.success("Livro cadastrado com sucesso");
+            return Result.success("Ferramenta cadastrado com sucesso");
+
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
+            return Result.fail(err.getMessage());
+        }
+    }
+
+    @Override
+    public Result update(Ferramenta ferramenta) {
+        try {
+            Connection con = fabricaConexoes.getConnection();
+            PreparedStatement prep_Statement = con.prepareStatement(SQL_UPDATE);
+
+            prep_Statement.setString(1, ferramenta.getNome());
+            prep_Statement.setInt(2, ferramenta.getEstoque());
+            prep_Statement.setInt(3, ferramenta.getId());
+
+            prep_Statement.execute();
+
+            prep_Statement.close();
+            con.close();
+
+            return Result.success("Ferramenta atualizada com sucesso");
 
         } catch (SQLException err) {
             System.out.println(err.getMessage());
@@ -80,5 +104,5 @@ public class JDBCFerramentaDAO implements FerramentaDAO {
             return null;
         }
     }
-    
+
 }

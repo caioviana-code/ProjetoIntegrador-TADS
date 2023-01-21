@@ -28,7 +28,7 @@
             <Button fx:id="btLimpar" text="Limpar" onAction="#limpar"/>
       </HBox>
 
-      <TableView fx:id="tbFerramentas" prefHeight="424.0" prefWidth="800.0">
+      <TableView fx:id="tbFerramentas" prefHeight="424.0" prefWidth="800.0" onMouseClicked="#atualizar">
             <columns>
                   <TableColumn fx:id="tbcNome" prefWidth="278.0" text="Nome"/>
                   <TableColumn fx:id="tbcEstoque" prefWidth="278.0" text="Estoque"/>

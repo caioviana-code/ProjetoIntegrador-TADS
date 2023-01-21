@@ -2,6 +2,10 @@ package ifpr.pgua.eic.mylist.controllers.viewmodels;
 
 import ifpr.pgua.eic.mylist.models.entities.Ferramenta;
 import ifpr.pgua.eic.mylist.models.repositories.FerramentaRepository;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
@@ -13,6 +17,12 @@ public class TelaFerramentaViewModel {
     private StringProperty estoqueProperty = new SimpleStringProperty();
 
     private ObservableList<FerramentaRow> ferramentas = FXCollections.observableArrayList();
+
+    private StringProperty operacao = new SimpleStringProperty("Cadastrar");
+    private BooleanProperty podeEditar = new SimpleBooleanProperty(true);
+    private boolean atualizar = false;
+
+    private ObjectProperty<FerramentaRow> selecionado = new SimpleObjectProperty<>();
 
     private FerramentaRepository repository;
 
@@ -28,6 +38,22 @@ public class TelaFerramentaViewModel {
         return estoqueProperty;
     }
 
+    public ObservableList<FerramentaRow> getFerramentas() {
+        return ferramentas;
+    }
+
+    public StringProperty operacaoProperty() {
+        return operacao;
+    }
+
+    public BooleanProperty podeEditarProperty() {
+        return podeEditar;
+    }
+
+    public ObjectProperty<FerramentaRow> selecionadoProperty() {
+        return selecionado;
+    }
+   
     public void updateList() {
         ferramentas.clear();
         for (Ferramenta f: repository.getFerramentas()) {
@@ -41,18 +67,30 @@ public class TelaFerramentaViewModel {
 
         int estoque = Integer.parseInt(str_estoque);
 
-        repository.adicionarFerramenta(nome, estoque);
+        if (atualizar) {
+            repository.atualizarFerramenta(nome, estoque);
+        } else {
+            repository.adicionarFerramenta(nome, estoque);
+        }
 
         updateList();
         limpar();
     }
 
+    public void atualizar() {
+        operacao.setValue("Atualizar");
+        podeEditar.setValue(false);
+        atualizar = true;
+        Ferramenta ferramenta = selecionado.get().getFerramenta();
+        nomeProperty.setValue(ferramenta.getNome());
+        estoqueProperty.setValue(String.valueOf(ferramenta.getEstoque()));
+    }
+
     public void limpar() {
         nomeProperty.setValue("");
         estoqueProperty.setValue("");
-    }
-
-    public ObservableList<FerramentaRow> getFerramentas() {
-        return ferramentas;
+        podeEditar.setValue(true);
+        atualizar = false;
+        operacao.setValue("Cadastrar");
     }
 }

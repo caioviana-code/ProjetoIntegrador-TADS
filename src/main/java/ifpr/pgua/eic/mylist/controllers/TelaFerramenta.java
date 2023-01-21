@@ -5,7 +5,6 @@ import java.util.ResourceBundle;
 
 import ifpr.pgua.eic.mylist.controllers.viewmodels.FerramentaRow;
 import ifpr.pgua.eic.mylist.controllers.viewmodels.TelaFerramentaViewModel;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -13,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 public class TelaFerramenta extends BaseController implements Initializable {
 
@@ -54,8 +54,14 @@ public class TelaFerramenta extends BaseController implements Initializable {
 
         tbFerramentas.setItems(viewModel.getFerramentas());
 
+        viewModel.selecionadoProperty().bind(tbFerramentas.getSelectionModel().selectedItemProperty());
+
         tfNome.textProperty().bindBidirectional(viewModel.nomeProperty());
+        tfNome.editableProperty().bind(viewModel.podeEditarProperty());
+
         tfEstoque.textProperty().bindBidirectional(viewModel.estoqueProperty());
+
+        btCadastrar.textProperty().bind(viewModel.operacaoProperty());
 
         viewModel.updateList();
     }
@@ -69,4 +75,12 @@ public class TelaFerramenta extends BaseController implements Initializable {
     private void limpar() {
         viewModel.limpar();
     }
+
+    @FXML
+    private void atualizar(MouseEvent event) {
+        if (event.getClickCount() == 2) {
+            viewModel.atualizar();
+        }
+    }
+
 }

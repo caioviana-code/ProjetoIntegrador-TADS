@@ -3,14 +3,10 @@ package ifpr.pgua.eic.mylist.models.repositories;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
-import ifpr.pgua.eic.mylist.controllers.viewmodels.FerramentaRow;
 import ifpr.pgua.eic.mylist.models.daos.FerramentaDAO;
 import ifpr.pgua.eic.mylist.models.entities.Ferramenta;
 import ifpr.pgua.eic.mylist.models.results.Result;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 
 public class FerramentaRepository {
     

@@ -8,5 +8,6 @@ import ifpr.pgua.eic.mylist.models.results.Result;
 public interface FerramentaDAO {
     Result create(Ferramenta ferramenta);
     Result update(Ferramenta ferramenta);
+    Result delete(Ferramenta ferramenta);
     List<Ferramenta> ListAll(); 
 }

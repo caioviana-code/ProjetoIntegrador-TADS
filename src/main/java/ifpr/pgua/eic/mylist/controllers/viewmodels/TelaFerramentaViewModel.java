@@ -20,6 +20,7 @@ public class TelaFerramentaViewModel {
 
     private StringProperty operacao = new SimpleStringProperty("Cadastrar");
     private BooleanProperty podeEditar = new SimpleBooleanProperty(true);
+    private BooleanProperty desativado = new SimpleBooleanProperty(true);
     private boolean atualizar = false;
 
     private ObjectProperty<FerramentaRow> selecionado = new SimpleObjectProperty<>();
@@ -48,6 +49,10 @@ public class TelaFerramentaViewModel {
 
     public BooleanProperty podeEditarProperty() {
         return podeEditar;
+    }
+
+    public BooleanProperty desativadoProperty() {
+        return desativado;
     }
 
     public ObjectProperty<FerramentaRow> selecionadoProperty() {
@@ -80,16 +85,26 @@ public class TelaFerramentaViewModel {
     public void atualizar() {
         operacao.setValue("Atualizar");
         podeEditar.setValue(false);
+        desativado.setValue(false);
         atualizar = true;
         Ferramenta ferramenta = selecionado.get().getFerramenta();
         nomeProperty.setValue(ferramenta.getNome());
         estoqueProperty.setValue(String.valueOf(ferramenta.getEstoque()));
     }
 
+    public void excluir() {
+        Ferramenta ferramenta = selecionado.get().getFerramenta();
+        repository.excluirFerramenta(ferramenta);
+
+        updateList();
+        limpar();
+    }
+
     public void limpar() {
         nomeProperty.setValue("");
         estoqueProperty.setValue("");
         podeEditar.setValue(true);
+        desativado.setValue(true);
         atualizar = false;
         operacao.setValue("Cadastrar");
     }

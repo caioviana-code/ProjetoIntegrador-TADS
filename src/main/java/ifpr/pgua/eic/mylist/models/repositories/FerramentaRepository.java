@@ -36,6 +36,10 @@ public class FerramentaRepository {
         return Result.fail("Ferramenta não encontrada");
     }
 
+    public Result excluirFerramenta(Ferramenta ferramenta) {
+        return dao.delete(ferramenta);
+    }
+
     public List<Ferramenta> getFerramentas() {
         ferramentas = dao.ListAll();
         return Collections.unmodifiableList(ferramentas);

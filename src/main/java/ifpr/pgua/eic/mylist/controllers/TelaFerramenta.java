@@ -29,6 +29,8 @@ public class TelaFerramenta extends BaseController implements Initializable {
     @FXML
     private Button btLimpar;
 
+    @FXML
+    private Button btExcluir;
 
     @FXML
     private TableColumn<FerramentaRow,String> tbcNome;
@@ -63,6 +65,8 @@ public class TelaFerramenta extends BaseController implements Initializable {
 
         btCadastrar.textProperty().bind(viewModel.operacaoProperty());
 
+        btExcluir.disableProperty().bind(viewModel.desativadoProperty());
+
         viewModel.updateList();
     }
 
@@ -81,6 +85,11 @@ public class TelaFerramenta extends BaseController implements Initializable {
         if (event.getClickCount() == 2) {
             viewModel.atualizar();
         }
+    }
+
+    @FXML
+    private void excluir() {
+        viewModel.excluir();
     }
 
 }

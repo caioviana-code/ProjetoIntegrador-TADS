@@ -15,6 +15,7 @@ public class JDBCFerramentaDAO implements FerramentaDAO {
 
     private static final String SQL_INSERT = "INSERT INTO pi_ferramenta(nome,estoque) VALUES (?,?)";
     private static final String SQL_UPDATE = "UPDATE pi_ferramenta SET nome=?, estoque=? WHERE id=?";
+    private static final String SQL_DELETE = "DELETE FROM pi_ferramenta WHERE id=?";
     private static final String SQL_SELECT_ALL = "SELECT * FROM pi_ferramenta";
 
     FabricaConexoes fabricaConexoes;
@@ -61,6 +62,27 @@ public class JDBCFerramentaDAO implements FerramentaDAO {
             con.close();
 
             return Result.success("Ferramenta atualizada com sucesso");
+
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
+            return Result.fail(err.getMessage());
+        }
+    }
+
+    @Override
+    public Result delete(Ferramenta ferramenta) {
+        try {
+            Connection con = fabricaConexoes.getConnection();
+            PreparedStatement prep_Statement = con.prepareStatement(SQL_DELETE);
+
+            prep_Statement.setInt(1, ferramenta.getId());
+
+            prep_Statement.execute();
+
+            prep_Statement.close();
+            con.close();
+
+            return Result.success("Ferramente excluida com sucesso");
 
         } catch (SQLException err) {
             System.out.println(err.getMessage());

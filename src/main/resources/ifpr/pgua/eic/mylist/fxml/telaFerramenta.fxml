@@ -12,10 +12,12 @@
 <VBox xmlns="http://javafx.com/javafx" 
       xmlns:fx="http://javafx.com/fxml" 
       prefHeight="600.0" prefWidth="1000.0"
+      spacing="10.0"
       fx:controller="ifpr.pgua.eic.mylist.controllers.TelaFerramenta"
       >
 
-      <HBox>
+      
+      <HBox spacing="05.0">
             <Label alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="74.0" text="Nome:"/>
             <TextField fx:id="tfNome"/>
 
@@ -23,7 +25,7 @@
             <TextField fx:id="tfEstoque"/>
       </HBox>
 
-      <HBox>
+      <HBox spacing="05.0">
             <Button fx:id="btCadastrar" text="Cadastrar" onAction="#cadastrar"/>
             <Button fx:id="btLimpar" text="Limpar" onAction="#limpar"/>
             <Button fx:id="btExcluir" text="Excluir" onAction="#excluir"/>

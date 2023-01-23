@@ -58,7 +58,7 @@ public class TelaFerramentaViewModel {
     public ObjectProperty<FerramentaRow> selecionadoProperty() {
         return selecionado;
     }
-   
+
     public void updateList() {
         ferramentas.clear();
         for (Ferramenta f: repository.getFerramentas()) {
@@ -108,4 +108,5 @@ public class TelaFerramentaViewModel {
         atualizar = false;
         operacao.setValue("Cadastrar");
     }
+
 }

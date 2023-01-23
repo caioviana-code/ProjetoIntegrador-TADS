@@ -1,6 +1,6 @@
 Semana 09/01/2023 - 15/01/2023
 
-- Criação da classe modelo Ferramenta
+- Criação da classe Ferramenta
 - Criação do DAO da classe Ferramenta
 - Criação do Repository da classe Ferramenta
 - Criação da ViewModel da telaFerramenta
@@ -14,3 +14,4 @@ Semana 16/01/2023 - 22/01/2023
 
 Semana 23/01/2023 - 29/01/2023
 
+- Criaçao da classe Funcionario

@@ -32,6 +32,7 @@ public class TelaFerramenta extends BaseController implements Initializable {
     @FXML
     private Button btExcluir;
 
+
     @FXML
     private TableColumn<FerramentaRow,String> tbcNome;
 

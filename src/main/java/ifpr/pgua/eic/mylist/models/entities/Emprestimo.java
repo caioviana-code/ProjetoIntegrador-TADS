@@ -1,28 +1,25 @@
 package ifpr.pgua.eic.mylist.models.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Emprestimo {
     
     private Integer id;
     private Funcionario funcionario;
-    private Ferramenta ferramenta;
-    private Integer quantidade;
+    private List<ItemEmprestimo> itens;
     private LocalDateTime dataHora;
     
-    public Emprestimo(Integer id, Funcionario funcionario, Ferramenta ferramenta, Integer quantidade,
-            LocalDateTime dataHora) {
+    public Emprestimo(Integer id, Funcionario funcionario, List<ItemEmprestimo> itens, LocalDateTime dataHora) {
         this.id = id;
         this.funcionario = funcionario;
-        this.ferramenta = ferramenta;
-        this.quantidade = quantidade;
+        this.itens = itens;
         this.dataHora = dataHora;
     }
 
-    public Emprestimo(Funcionario funcionario, Ferramenta ferramenta, Integer quantidade, LocalDateTime dataHora) {
+    public Emprestimo(Funcionario funcionario, List<ItemEmprestimo> itens, LocalDateTime dataHora) {
         this.funcionario = funcionario;
-        this.ferramenta = ferramenta;
-        this.quantidade = quantidade;
+        this.itens = itens;
         this.dataHora = dataHora;
     }
 
@@ -42,20 +39,12 @@ public class Emprestimo {
         this.funcionario = funcionario;
     }
 
-    public Ferramenta getFerramenta() {
-        return ferramenta;
+    public List<ItemEmprestimo> getItens() {
+        return itens;
     }
 
-    public void setFerramenta(Ferramenta ferramenta) {
-        this.ferramenta = ferramenta;
-    }
-
-    public Integer getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
+    public void setItens(List<ItemEmprestimo> itens) {
+        this.itens = itens;
     }
 
     public LocalDateTime getDataHora() {
@@ -68,8 +57,8 @@ public class Emprestimo {
 
     @Override
     public String toString() {
-        return "Emprestimo [id=" + id + ", funcionario=" + funcionario + ", ferramenta=" + ferramenta + ", quantidade="
-                + quantidade + ", dataHora=" + dataHora + "]";
+        return "Emprestimo [id=" + id + ", funcionario=" + funcionario + ", itens=" + itens + ", dataHora=" + dataHora
+                + "]";
     }
-
+    
 }

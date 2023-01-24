@@ -15,3 +15,5 @@ Semana 16/01/2023 - 22/01/2023
 Semana 23/01/2023 - 29/01/2023
 
 - Criaçao da classe Funcionario
+- Criação do DAO da classe Funcionario
+- Criação do Repository da classe Funcionario

@@ -22,14 +22,14 @@ public class FerramentaRepository {
         return dao.create(ferramenta);
     }
 
-    public Result atualizarFerramenta(String nome, int estoque) {
+    public Result atualizarFerramenta(String nome, int novoEstoque) {
 
         Optional<Ferramenta> busca = ferramentas.stream().filter((n)->n.getNome().equals(nome)).findFirst();
 
         if (busca.isPresent()) {
             Ferramenta ferramenta = busca.get();
             ferramenta.setNome(nome);
-            ferramenta.setEstoque(estoque);
+            ferramenta.setEstoque(novoEstoque);
 
             return dao.update(ferramenta);
         }

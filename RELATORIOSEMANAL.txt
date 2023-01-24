@@ -21,3 +21,4 @@ Semana 23/01/2023 - 29/01/2023
 - Caso de uso visualizar funcionários concluido
 - Caso de uso atualizar funcionários concluido
 - Caso de uso exluir funcionários concluido
+- Criação da classe Emprestimo

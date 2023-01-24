@@ -10,4 +10,9 @@ public class TelaPrincipal extends BaseController {
     private void carregarTelaFerramenta() {
         App.changeScreenRegion("FERRAMENTA", BorderPaneRegion.CENTER);
     }
+
+    @FXML
+    private void carregarTelaFuncionario() {
+        App.changeScreenRegion("FUNCIONARIO", BorderPaneRegion.CENTER);
+    }
 }

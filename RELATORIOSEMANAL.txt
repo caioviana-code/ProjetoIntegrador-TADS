@@ -17,3 +17,7 @@ Semana 23/01/2023 - 29/01/2023
 - Criaçao da classe Funcionario
 - Criação do DAO da classe Funcionario
 - Criação do Repository da classe Funcionario
+- Criação da tela de cadastro e visualização de funcionários
+- Caso de uso visualizar funcionários concluido
+- Caso de uso atualizar funcionários concluido
+- Caso de uso exluir funcionários concluido

@@ -29,7 +29,7 @@ public class FuncionarioRepository {
         if (busca.isPresent()) {
             Funcionario funcionario = busca.get();
             funcionario.setTelefone(novoTelefone);
-            return dao.delete(funcionario);
+            return dao.update(funcionario);
         }
         return Result.fail("Funcionario não encontrado");
     }

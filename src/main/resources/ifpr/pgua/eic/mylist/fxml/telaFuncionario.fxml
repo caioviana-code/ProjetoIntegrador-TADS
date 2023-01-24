@@ -13,15 +13,19 @@
       xmlns:fx="http://javafx.com/fxml" 
       prefHeight="600.0" prefWidth="1000.0"
       spacing="10.0"
-      fx:controller="ifpr.pgua.eic.mylist.controllers.TelaFerramenta"
+      fx:controller="ifpr.pgua.eic.mylist.controllers.TelaFuncionario"
       >
+
 
       <HBox spacing="05.0">
             <Label alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="74.0" text="Nome:"/>
             <TextField fx:id="tfNome"/>
 
-            <Label alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="74.0" text="Estoque:"/>
-            <TextField fx:id="tfEstoque"/>
+            <Label alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="74.0" text="CPF:"/>
+            <TextField fx:id="tfCpf"/>
+
+            <Label alignment="CENTER_RIGHT" prefHeight="16.0" prefWidth="74.0" text="Telefone:"/>
+            <TextField fx:id="tfTelefone"/>
       </HBox>
 
       <HBox spacing="05.0">
@@ -30,10 +34,11 @@
             <Button fx:id="btExcluir" text="Excluir" onAction="#excluir"/>
       </HBox>
 
-      <TableView fx:id="tbFerramentas" prefHeight="424.0" prefWidth="800.0" onMouseClicked="#atualizar">
+      <TableView fx:id="tbFuncionarios" prefHeight="424.0" prefWidth="800.0" onMouseClicked="#atualizar">
             <columns>
                   <TableColumn fx:id="tbcNome" prefWidth="278.0" text="Nome"/>
-                  <TableColumn fx:id="tbcEstoque" prefWidth="278.0" text="Estoque"/>
+                  <TableColumn fx:id="tbcCpf" prefWidth="278.0" text="CPF"/>
+                  <TableColumn fx:id="tbcTelefone" prefWidth="278.0" text="Telefone"/>
             </columns>
       </TableView>
 

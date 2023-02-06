@@ -13,10 +13,10 @@ import ifpr.pgua.eic.mylist.models.results.Result;
 
 public class JDBCFerramentaDAO implements FerramentaDAO {
 
-    private static final String SQL_INSERT = "INSERT INTO pi_ferramenta(nome,estoque) VALUES (?,?)";
-    private static final String SQL_UPDATE = "UPDATE pi_ferramenta SET nome=?, estoque=? WHERE id=?";
-    private static final String SQL_DELETE = "DELETE FROM pi_ferramenta WHERE id=?";
-    private static final String SQL_SELECT_ALL = "SELECT * FROM pi_ferramenta";
+    private static final String SQL_INSERT = "INSERT INTO pi_ferramentas(nome,estoque) VALUES (?,?)";
+    private static final String SQL_UPDATE = "UPDATE pi_ferramentas SET nome=?, estoque=? WHERE id=?";
+    private static final String SQL_DELETE = "DELETE FROM pi_ferramentas WHERE id=?";
+    private static final String SQL_SELECT_ALL = "SELECT * FROM pi_ferramentas";
 
     FabricaConexoes fabricaConexoes;
 

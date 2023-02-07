@@ -127,4 +127,59 @@ public class JDBCFerramentaDAO implements FerramentaDAO {
         }
     }
 
+    @Override
+    public Ferramenta getById(int id) {
+        try {
+            Connection con = fabricaConexoes.getConnection();
+            PreparedStatement prep_statement = con.prepareStatement("SELECT * FROM pi_ferramentas WHERE id=?");
+
+            prep_statement.setInt(1, id);
+
+            ResultSet result = prep_statement.executeQuery();
+            Ferramenta ferramenta = null;
+
+            while (result.next()) {
+                ferramenta = buildFrom(result);
+            }
+
+            result.close();
+            prep_statement.close();
+            con.close();
+
+            return ferramenta;
+
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
+            return null;
+        }
+    }
+
+    @Override
+    public Ferramenta getFerramentaItem(int idFerramenta) {
+        Ferramenta ferramenta = null;
+
+        try {
+            Connection con = fabricaConexoes.getConnection();
+            PreparedStatement prep_Statement = con.prepareStatement("SELECT idFerramenta FROM pi_itensemprestimo WHERE id=?");
+
+            prep_Statement.setInt(1, idFerramenta);
+
+            ResultSet result = prep_Statement.executeQuery();
+            result.next();
+
+            int idItem = result.getInt("idFerramenta");
+
+            result.close();
+            prep_Statement.close();
+            con.close();
+
+            ferramenta = getById(idItem);
+
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
+        }
+
+        return ferramenta;
+    }
+
 }

@@ -127,5 +127,63 @@ public class JDBCFuncionarioDAO implements FuncionarioDAO{
             return null;
         }
     }
-    
+
+    @Override
+    public Funcionario getById(int id) {
+        
+        Funcionario funcionario = null;
+
+        try {
+            Connection con = fabricaConexoes.getConnection();
+            PreparedStatement prep_Statement = con.prepareStatement("SELECT * FROM pi_funcionarios WHERE id=?");
+
+            prep_Statement.setInt(1, id);
+
+            ResultSet result = prep_Statement.executeQuery();
+
+            while (result.next()) {
+                funcionario = buildFrom(result);
+            }
+
+            result.close();
+            prep_Statement.close();
+            con.close();
+
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
+            return null;
+        }
+
+        return funcionario;
+    }
+
+    @Override
+    public Funcionario getFuncionarioFromEmprestimo(int idEmprestimo) {
+        
+        Funcionario funcionario = null;
+
+        try {
+            Connection con = fabricaConexoes.getConnection();
+            PreparedStatement prep_Statement = con.prepareStatement("SELECT idFuncionario FROM pi_emprestimo WHERE id=?");
+
+            prep_Statement.setInt(1, idEmprestimo);
+
+            ResultSet result = prep_Statement.executeQuery();
+            result.next();
+
+            int idFuncionario = result.getInt("idFuncionario");
+
+            funcionario = getById(idFuncionario);
+
+            result.close();
+            prep_Statement.close();
+            con.close();
+
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
+        }
+
+        return funcionario;
+    }
+
 }

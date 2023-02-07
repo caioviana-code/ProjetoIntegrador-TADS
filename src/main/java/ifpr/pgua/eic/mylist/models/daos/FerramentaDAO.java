@@ -10,4 +10,6 @@ public interface FerramentaDAO {
     Result update(Ferramenta ferramenta);
     Result delete(Ferramenta ferramenta);
     List<Ferramenta> ListAll(); 
+    Ferramenta getById(int id);
+    Ferramenta getFerramentaItem(int idFerramenta);
 }

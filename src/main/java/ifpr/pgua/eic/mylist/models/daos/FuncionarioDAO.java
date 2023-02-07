@@ -10,4 +10,6 @@ public interface FuncionarioDAO {
     Result update(Funcionario funcionario);
     Result delete(Funcionario funcionario);
     List<Funcionario> ListAll(); 
+    Funcionario getById(int id);
+    Funcionario getFuncionarioFromEmprestimo(int idEmprestimo);
 }

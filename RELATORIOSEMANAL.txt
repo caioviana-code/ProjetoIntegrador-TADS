@@ -27,4 +27,4 @@ Semana 23/01/2023 - 29/01/2023
 Semana 06/02/2023 = 12/02/2023
 
 - Criação do DAO da classe Emprestimo
-- 
+- Criação do Repository da classe Emprestimo

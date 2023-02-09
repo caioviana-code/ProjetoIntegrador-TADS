@@ -9,51 +9,31 @@ public class Emprestimo {
     
     private Integer id;
     private Funcionario funcionario;
-    private String cpfFuncionario;
-    private List<ItemEmprestimo> itens;
+    private Ferramenta ferramenta;
+    private Integer quantidade;
     private LocalDateTime dataEmprestimo;
     private LocalDateTime dataDevolucao;
     private Integer status;
     
-    public Emprestimo(Integer id, Funcionario funcionario, String cpfFuncionario, List<ItemEmprestimo> itens, LocalDateTime dataEmprestimo, LocalDateTime dataDevolucao, Integer status) {
+    public Emprestimo(Integer id, Funcionario funcionario, Ferramenta ferramenta,
+            Integer quantidade, LocalDateTime dataEmprestimo, LocalDateTime dataDevolucao, Integer status) {
         this.id = id;
         this.funcionario = funcionario;
-        this.cpfFuncionario = cpfFuncionario;
-        this.itens = itens;
+        this.ferramenta = ferramenta;
+        this.quantidade = quantidade;
         this.dataEmprestimo = dataEmprestimo;
         this.dataDevolucao = dataDevolucao;
         this.status = status;
     }
 
-    public Emprestimo(Integer id, String cpfFuncionario, LocalDateTime dataEmprestimo, LocalDateTime dataDevolucao, Integer status) {
-        this.id = id;
-        this.cpfFuncionario = cpfFuncionario;
-        this.dataEmprestimo = dataEmprestimo;
-        this.dataDevolucao = dataDevolucao;
-        this.status = status;
-    }
-
-    public Emprestimo(Funcionario funcionario, String cpfFuncionario, List<ItemEmprestimo> itens, LocalDateTime dataEmprestimo, LocalDateTime dataDevolucao, Integer status) {
+    public Emprestimo(Funcionario funcionario, Ferramenta ferramenta, Integer quantidade,
+            LocalDateTime dataEmprestimo, LocalDateTime dataDevolucao, Integer status) {
         this.funcionario = funcionario;
-        this.cpfFuncionario = cpfFuncionario;
-        this.itens = itens;
+        this.ferramenta = ferramenta;
+        this.quantidade = quantidade;
         this.dataEmprestimo = dataEmprestimo;
         this.dataDevolucao = dataDevolucao;
         this.status = status;
-    }
-
-    public void adicionarFerramenta(Ferramenta ferramenta, Integer quantidade) {
-        Optional<ItemEmprestimo> item = itens.stream().filter((it)->it.getFerramenta().getId()==ferramenta.getId()).findFirst();
-
-        if (item.isPresent()) {
-            ItemEmprestimo i = item.get();
-            i.setQuantidade(i.getQuantidade() + quantidade);
-        } else {
-            ItemEmprestimo i = new ItemEmprestimo();
-            i.setFerramenta(ferramenta);
-            i.setQuantidade(quantidade);
-            itens.add(i);
-        }
     }
 
     public Integer getId() {
@@ -70,14 +50,6 @@ public class Emprestimo {
 
     public void setFuncionario(Funcionario funcionario) {
         this.funcionario = funcionario;
-    }
-
-    public List<ItemEmprestimo> getItens() {
-        return Collections.unmodifiableList(itens);
-    }
-
-    public void setItens(List<ItemEmprestimo> itens) {
-        this.itens = itens;
     }
 
     public LocalDateTime getDataEmprestimo() {
@@ -104,11 +76,27 @@ public class Emprestimo {
         this.status = status;
     }
 
+    public Ferramenta getFerramenta() {
+        return ferramenta;
+    }
+
+    public void setFerramenta(Ferramenta ferramenta) {
+        this.ferramenta = ferramenta;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
+
     @Override
     public String toString() {
-        return "Emprestimo [id=" + id + ", funcionario=" + funcionario + ", cpfFuncionario=" + cpfFuncionario
-                + ", itens=" + itens + ", dataEmprestimo=" + dataEmprestimo + ", dataDevolucao=" + dataDevolucao
-                + ", status=" + status + "]";
+        return "Emprestimo [id=" + id + ", funcionario=" + funcionario + ", ferramenta=" + ferramenta + ", quantidade="
+                + quantidade + ", dataEmprestimo=" + dataEmprestimo + ", dataDevolucao=" + dataDevolucao + ", status="
+                + status + "]";
     }
 
 }

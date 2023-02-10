@@ -33,6 +33,14 @@ public class Emprestimo {
         this.status = status;
     }
 
+    public Emprestimo(Integer id, Integer quantidade, LocalDateTime dataEmprestimo, LocalDateTime dataDevolucao, Integer status) {
+        this.id = id;
+        this.quantidade = quantidade;
+        this.dataEmprestimo = dataEmprestimo;
+        this.dataDevolucao = dataDevolucao;
+        this.status = status;
+    }
+
     public Integer getId() {
         return id;
     }

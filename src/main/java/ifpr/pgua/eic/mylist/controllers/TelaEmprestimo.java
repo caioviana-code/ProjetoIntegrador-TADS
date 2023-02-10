@@ -78,6 +78,7 @@ public class TelaEmprestimo extends BaseController implements Initializable{
 
         tfQuantidade.textProperty().bindBidirectional(viewModel.quantidadeProperty());
         
+        
     }
 
     @FXML

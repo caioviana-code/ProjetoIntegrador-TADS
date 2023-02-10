@@ -1,20 +1,29 @@
 package ifpr.pgua.eic.mylist.models.daos;
 
+import java.rmi.StubNotFoundException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import ifpr.pgua.eic.mylist.models.FabricaConexoes;
 import ifpr.pgua.eic.mylist.models.entities.Emprestimo;
+import ifpr.pgua.eic.mylist.models.entities.Ferramenta;
+import ifpr.pgua.eic.mylist.models.entities.Funcionario;
 import ifpr.pgua.eic.mylist.models.results.Result;
 
 public class JDBCEmprestimoDAO implements EmprestimoDAO {
 
     private static final String SQL_INSERT = "INSERT INTO pi_emprestimos(idFuncionario,idFerramenta,quantidade,dataEmprestimo,dataDevolucao,status) VALUES (?,?,?,?,?,?)";
     private static final String SQL_SELECT_ALL = "SELECT * FROM pi_emprestimos";
+    private static final String SQL_FUNCIONARIO_BY_ID = "SELECT * FROM pi_funcionarios WHERE id=?";
+    private static final String SQL_FERRAMENTA_BY_ID = "SELECT * FROM pi_ferramentas WHERE id=?";
 
     private FabricaConexoes fabricaConexoes;
 
@@ -48,9 +57,47 @@ public class JDBCEmprestimoDAO implements EmprestimoDAO {
         }
     }
 
+    private Emprestimo buildFrom(ResultSet result) throws SQLException {
+        int id = result.getInt("id");
+        int quantidade = result.getInt("quantidade");
+        LocalDateTime dataEmprestimo = result.getTimestamp("dataEmprestimo").toLocalDateTime();
+        LocalDateTime dataDevolucao = null;
+        try {
+            dataDevolucao = result.getTimestamp("dataDevolucao").toLocalDateTime();
+        } catch (NullPointerException err) {
+
+        }
+        int status = result.getInt("status");
+
+        Emprestimo emprestimo = new Emprestimo(id, quantidade, dataEmprestimo, dataDevolucao, status);
+
+        return emprestimo;
+    }
+
     @Override
     public List<Emprestimo> listAll() {
-        return null;
+        List<Emprestimo> lista = new ArrayList<>();
+
+        try {
+            Connection con = fabricaConexoes.getConnection();
+            PreparedStatement prep_Statement = con.prepareStatement(SQL_SELECT_ALL);
+            ResultSet result = prep_Statement.executeQuery();
+
+            while (result.next()) {
+                Emprestimo emprestimo = buildFrom(result);
+                lista.add(emprestimo);
+            }
+
+            result.close();
+            prep_Statement.close();
+            con.close();
+
+            return lista;
+
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
+            return Collections.emptyList();
+        }
     }
     
 }

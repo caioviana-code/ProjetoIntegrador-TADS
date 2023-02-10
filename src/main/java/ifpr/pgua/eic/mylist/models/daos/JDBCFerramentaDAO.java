@@ -129,6 +129,9 @@ public class JDBCFerramentaDAO implements FerramentaDAO {
 
     @Override
     public Ferramenta getById(int id) {
+
+        Ferramenta ferramenta = null;
+
         try {
             Connection con = fabricaConexoes.getConnection();
             PreparedStatement prep_statement = con.prepareStatement("SELECT * FROM pi_ferramentas WHERE id=?");
@@ -136,7 +139,6 @@ public class JDBCFerramentaDAO implements FerramentaDAO {
             prep_statement.setInt(1, id);
 
             ResultSet result = prep_statement.executeQuery();
-            Ferramenta ferramenta = null;
 
             while (result.next()) {
                 ferramenta = buildFrom(result);
@@ -146,34 +148,35 @@ public class JDBCFerramentaDAO implements FerramentaDAO {
             prep_statement.close();
             con.close();
 
-            return ferramenta;
-
         } catch (SQLException err) {
             System.out.println(err.getMessage());
             return null;
         }
+
+        return ferramenta;
     }
 
     @Override
-    public Ferramenta getFerramentaItem(int idFerramenta) {
+    public Ferramenta getFerramentaFromEmprestimo(int idEmprestimo) {
+
         Ferramenta ferramenta = null;
 
         try {
             Connection con = fabricaConexoes.getConnection();
-            PreparedStatement prep_Statement = con.prepareStatement("SELECT idFerramenta FROM pi_itensemprestimo WHERE id=?");
+            PreparedStatement prep_Statement = con.prepareStatement("SELECT idFerramenta FROM pi_emprestimos WHERE id=?");
 
-            prep_Statement.setInt(1, idFerramenta);
+            prep_Statement.setInt(1, idEmprestimo);
 
             ResultSet result = prep_Statement.executeQuery();
             result.next();
 
-            int idItem = result.getInt("idFerramenta");
+            int idFerramenta = result.getInt("idFerramenta");
+
+            ferramenta = getById(idFerramenta);
 
             result.close();
             prep_Statement.close();
             con.close();
-
-            ferramenta = getById(idItem);
 
         } catch (SQLException err) {
             System.out.println(err.getMessage());

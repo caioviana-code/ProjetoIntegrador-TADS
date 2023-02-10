@@ -11,5 +11,5 @@ public interface FerramentaDAO {
     Result delete(Ferramenta ferramenta);
     List<Ferramenta> ListAll(); 
     Ferramenta getById(int id);
-    Ferramenta getFerramentaItem(int idFerramenta);
+    Ferramenta getFerramentaFromEmprestimo(int idFerramenta);
 }

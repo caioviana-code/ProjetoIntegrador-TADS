@@ -3,6 +3,7 @@ package ifpr.pgua.eic.mylist.controllers.viewmodels;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import ifpr.pgua.eic.mylist.models.entities.Emprestimo;
 import ifpr.pgua.eic.mylist.models.entities.Ferramenta;
 import ifpr.pgua.eic.mylist.models.entities.Funcionario;
 import ifpr.pgua.eic.mylist.models.repositories.EmprestimoRepository;
@@ -68,6 +69,13 @@ public class TelaEmprestimoViewModel {
         return selecionado;
     }
 
+    public void updateList() {
+        emprestimos.clear();
+        for (Emprestimo e : emprestimoRepository.getEmprestimos()) {
+            emprestimos.add(new EmprestimoRow(e));
+        }
+    }
+
     public void cadastrar() {
         Funcionario funcionario = funcionarioRepository.getFuncionarioByCpf(funcionarioProperty.getValue());
         Ferramenta ferramenta = ferramentaRepository.getFerramentaByNome(ferramentaProperty.getValue());
@@ -77,5 +85,8 @@ public class TelaEmprestimoViewModel {
         int status = 1;
 
         emprestimoRepository.adicionarEmprestimo(funcionario, ferramenta, quantidade, dataEmprestimo, dataDevolucao, status);
+
+        updateList();
     } 
+
 }

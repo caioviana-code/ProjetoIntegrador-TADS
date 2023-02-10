@@ -164,7 +164,7 @@ public class JDBCFuncionarioDAO implements FuncionarioDAO{
 
         try {
             Connection con = fabricaConexoes.getConnection();
-            PreparedStatement prep_Statement = con.prepareStatement("SELECT idFuncionario FROM pi_emprestimo WHERE id=?");
+            PreparedStatement prep_Statement = con.prepareStatement("SELECT idFuncionario FROM pi_emprestimos WHERE id=?");
 
             prep_Statement.setInt(1, idEmprestimo);
 

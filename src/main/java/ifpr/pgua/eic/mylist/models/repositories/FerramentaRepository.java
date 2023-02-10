@@ -45,4 +45,13 @@ public class FerramentaRepository {
         return Collections.unmodifiableList(ferramentas);
     }
 
+    public Ferramenta getFerramentaByNome(String nome) {
+        Ferramenta ferramenta = null;
+        for (Ferramenta f : ferramentas) {
+            if (f.getNome().equals(nome)) {
+                ferramenta = f;
+            }
+        }
+        return ferramenta;
+    }
 }

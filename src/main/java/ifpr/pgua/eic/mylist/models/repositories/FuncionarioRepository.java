@@ -42,4 +42,14 @@ public class FuncionarioRepository {
         funcionarios = dao.ListAll();
         return Collections.unmodifiableList(funcionarios);
     }
+
+    public Funcionario getFuncionarioByCpf(String cpf) {
+        Funcionario funcionario = null;
+        for (Funcionario f : funcionarios) {
+            if (f.getCpf().equals(cpf)) {
+                funcionario = f;
+            }
+        }
+        return funcionario;
+    }
 }

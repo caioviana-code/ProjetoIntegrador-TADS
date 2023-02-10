@@ -5,6 +5,8 @@ import java.util.ResourceBundle;
 
 import ifpr.pgua.eic.mylist.controllers.viewmodels.FerramentaRow;
 import ifpr.pgua.eic.mylist.controllers.viewmodels.TelaFerramentaViewModel;
+import ifpr.pgua.eic.mylist.models.results.Result;
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -58,6 +60,10 @@ public class TelaFerramenta extends BaseController implements Initializable {
         tbFerramentas.setItems(viewModel.getFerramentas());
 
         viewModel.selecionadoProperty().bind(tbFerramentas.getSelectionModel().selectedItemProperty());
+
+        viewModel.alertProperty().addListener((ChangeListener<Result>) (observable, oldVal, newVal) -> {
+            showMessage(newVal);
+        });
 
         tfNome.textProperty().bindBidirectional(viewModel.nomeProperty());
         tfNome.editableProperty().bind(viewModel.podeEditarProperty());

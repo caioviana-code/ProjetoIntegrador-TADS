@@ -2,6 +2,7 @@ package ifpr.pgua.eic.mylist.controllers.viewmodels;
 
 import ifpr.pgua.eic.mylist.models.entities.Ferramenta;
 import ifpr.pgua.eic.mylist.models.repositories.FerramentaRepository;
+import ifpr.pgua.eic.mylist.models.results.Result;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -24,6 +25,8 @@ public class TelaFerramentaViewModel {
     private boolean atualizar = false;
 
     private ObjectProperty<FerramentaRow> selecionado = new SimpleObjectProperty<>();
+
+    private ObjectProperty<Result> alertProperty = new SimpleObjectProperty<>();
 
     private FerramentaRepository repository;
 
@@ -59,6 +62,10 @@ public class TelaFerramentaViewModel {
         return selecionado;
     }
 
+    public ObjectProperty<Result> alertProperty() {
+        return alertProperty;
+    }
+
     public void updateList() {
         ferramentas.clear();
         for (Ferramenta f: repository.getFerramentas()) {
@@ -80,6 +87,8 @@ public class TelaFerramentaViewModel {
 
         updateList();
         limpar();
+
+        alertProperty.setValue(Result.success("Ferramenta cadastrada com sucesso"));
     }
 
     public void atualizar() {

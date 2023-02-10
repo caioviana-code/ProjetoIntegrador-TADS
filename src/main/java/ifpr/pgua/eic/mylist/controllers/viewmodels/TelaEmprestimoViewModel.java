@@ -77,5 +77,5 @@ public class TelaEmprestimoViewModel {
         int status = 1;
 
         emprestimoRepository.adicionarEmprestimo(funcionario, ferramenta, quantidade, dataEmprestimo, dataDevolucao, status);
-    }
+    } 
 }

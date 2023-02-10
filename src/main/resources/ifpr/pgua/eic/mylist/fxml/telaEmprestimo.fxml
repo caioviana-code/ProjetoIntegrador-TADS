@@ -24,7 +24,6 @@
                   <TableColumn prefWidth="136.0" text="Ferramenta" fx:id="tbcFerramenta"/>
                   <TableColumn prefWidth="136.0" text="Quantidade" fx:id="tbcQuantidade"/>
                   <TableColumn prefWidth="174.0" text="Data Emprestimo" fx:id="tbcDataEmprestimo"/>
-                  <TableColumn prefWidth="168.0" text="Data Devoluçao" fx:id="tbcDataDevolucao"/>
               </columns>
             </TableView>
             <Button layoutX="138.0" layoutY="117.0" mnemonicParsing="false" text="Emprestar" onAction="#cadastrar"/>

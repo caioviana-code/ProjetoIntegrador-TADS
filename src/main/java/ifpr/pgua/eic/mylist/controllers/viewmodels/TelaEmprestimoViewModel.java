@@ -9,6 +9,7 @@ import ifpr.pgua.eic.mylist.models.entities.Funcionario;
 import ifpr.pgua.eic.mylist.models.repositories.EmprestimoRepository;
 import ifpr.pgua.eic.mylist.models.repositories.FerramentaRepository;
 import ifpr.pgua.eic.mylist.models.repositories.FuncionarioRepository;
+import ifpr.pgua.eic.mylist.models.results.Result;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -30,6 +31,8 @@ public class TelaEmprestimoViewModel {
     private BooleanProperty desativado = new SimpleBooleanProperty(true);
 
     private ObjectProperty<EmprestimoRow> selecionado = new SimpleObjectProperty<>();
+
+    private ObjectProperty<Result> alertProperty = new SimpleObjectProperty<>();
 
     private EmprestimoRepository emprestimoRepository;
     private FuncionarioRepository funcionarioRepository;
@@ -69,6 +72,10 @@ public class TelaEmprestimoViewModel {
         return selecionado;
     }
 
+    public ObjectProperty<Result> alertProperty() {
+        return alertProperty;
+    }
+
     public void updateList() {
         emprestimos.clear();
         for (Emprestimo e : emprestimoRepository.getEmprestimos()) {
@@ -76,7 +83,8 @@ public class TelaEmprestimoViewModel {
         }
     }
 
-    public void cadastrar() {
+    public Result cadastrar() {
+
         Funcionario funcionario = funcionarioRepository.getFuncionarioByCpf(funcionarioProperty.getValue());
         Ferramenta ferramenta = ferramentaRepository.getFerramentaByNome(ferramentaProperty.getValue());
         int quantidade = Integer.valueOf(quantidadeProperty.getValue());
@@ -84,9 +92,25 @@ public class TelaEmprestimoViewModel {
         LocalDateTime dataDevolucao = null;
         int status = 1;
 
+        if (funcionario == null) {
+            alertProperty.setValue(Result.fail("Funcionário não encontrado"));
+            return null;
+        }
+        if (ferramenta == null) {
+            alertProperty.setValue(Result.fail("Ferramenta não encontrada"));
+            return null;
+        }
+        if (quantidade > ferramenta.getEstoque()) {
+            alertProperty.setValue(Result.fail("Não há a quantidade da ferramenta no estoque!"));
+            return null;
+        }
+
         emprestimoRepository.adicionarEmprestimo(funcionario, ferramenta, quantidade, dataEmprestimo, dataDevolucao, status);
 
         updateList();
+
+        alertProperty.setValue(Result.success("Empréstimo realizado!"));
+        return null;
     } 
 
 }

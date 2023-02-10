@@ -33,8 +33,4 @@ public class EmprestimoRow {
     public StringProperty dataEmprestimoProperty() {
         return new SimpleStringProperty(DateTimeFormatter.ofPattern("dd/MM/yyyy").format(emprestimo.getDataEmprestimo()));
     }
-
-    public StringProperty dataDevolucaoProperty() {
-        return new SimpleStringProperty(DateTimeFormatter.ofPattern("dd/MM/yyyy").format(emprestimo.getDataDevolucao()));
-    }
 }

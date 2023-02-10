@@ -39,6 +39,10 @@ public class App extends BaseAppNavigator{
         funcionarioRepository = new FuncionarioRepository(funcionarioDAO);
         emprestimoRepository = new EmprestimoRepository(emprestimoDAO, funcionarioDAO, ferramentaDAO);
 
+        ferramentaRepository.getFerramentas();
+        funcionarioRepository.getFuncionarios();
+        emprestimoRepository.getEmprestimos();
+
         super.init();
     }
 

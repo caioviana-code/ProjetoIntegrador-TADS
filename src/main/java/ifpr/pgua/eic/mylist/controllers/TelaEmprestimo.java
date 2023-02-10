@@ -5,6 +5,8 @@ import java.util.ResourceBundle;
 
 import ifpr.pgua.eic.mylist.controllers.viewmodels.EmprestimoRow;
 import ifpr.pgua.eic.mylist.controllers.viewmodels.TelaEmprestimoViewModel;
+import ifpr.pgua.eic.mylist.models.results.Result;
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -48,9 +50,6 @@ public class TelaEmprestimo extends BaseController implements Initializable{
     private TableColumn<EmprestimoRow, String> tbcDataEmprestimo;
 
     @FXML
-    private TableColumn<EmprestimoRow, String> tbcDataDevolucao;
-
-    @FXML
     private TableView<EmprestimoRow> tbEmprestimos;
 
     
@@ -66,11 +65,14 @@ public class TelaEmprestimo extends BaseController implements Initializable{
         tbcFerramenta.setCellValueFactory(new PropertyValueFactory<>("ferramenta"));
         tbcQuantidade.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
         tbcDataEmprestimo.setCellValueFactory(new PropertyValueFactory<>("dataEmprestimo"));
-        tbcDataDevolucao.setCellValueFactory(new PropertyValueFactory<>("dataDevolucao"));
 
         tbEmprestimos.setItems(viewModel.getEmprestimos());
 
         viewModel.selecionadoProperty().bind(tbEmprestimos.getSelectionModel().selectedItemProperty());
+
+        viewModel.alertProperty().addListener((ChangeListener<Result>) (observable, oldVal, newVal) -> {
+            showMessage(newVal);
+        });
 
         tfFuncionario.textProperty().bindBidirectional(viewModel.funcionarioProperty());
 
@@ -78,7 +80,7 @@ public class TelaEmprestimo extends BaseController implements Initializable{
 
         tfQuantidade.textProperty().bindBidirectional(viewModel.quantidadeProperty());
         
-        
+        viewModel.updateList();
     }
 
     @FXML

@@ -28,6 +28,15 @@ public class EmprestimoRepository {
     }
 
     public Result adicionarEmprestimo(Funcionario funcionario, Ferramenta ferramenta, Integer quantidade, LocalDateTime dataEmprestimo, LocalDateTime dataDevolucao, int status)  {
+        
+        if (funcionario == null || ferramenta == null) {
+            return Result.fail("funcionário ou ferramenta inválido!");
+        }
+
+        if (quantidade > ferramenta.getEstoque()) {
+            return Result.fail("Não há a quantidade da ferramenta no estoque!");
+        }
+        
         Emprestimo emprestimo = new Emprestimo(funcionario, ferramenta, quantidade, dataEmprestimo, dataDevolucao, status);
         return emprestimoDAO.create(emprestimo);
     }    

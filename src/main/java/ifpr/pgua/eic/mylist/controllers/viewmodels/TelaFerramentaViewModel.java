@@ -81,14 +81,15 @@ public class TelaFerramentaViewModel {
 
         if (atualizar) {
             repository.atualizarFerramenta(nome, estoque);
+            alertProperty.setValue(Result.success("Ferramenta atualizada com sucesso"));
         } else {
             repository.adicionarFerramenta(nome, estoque);
+            alertProperty.setValue(Result.success("Ferramenta cadastrada com sucesso"));
         }
 
         updateList();
         limpar();
 
-        alertProperty.setValue(Result.success("Ferramenta cadastrada com sucesso"));
     }
 
     public void atualizar() {
@@ -107,6 +108,8 @@ public class TelaFerramentaViewModel {
 
         updateList();
         limpar();
+
+        alertProperty.setValue(Result.success("Ferramenta exlcuida com sucesso"));
     }
 
     public void limpar() {

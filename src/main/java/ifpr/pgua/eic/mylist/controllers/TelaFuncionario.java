@@ -5,6 +5,8 @@ import java.util.ResourceBundle;
 
 import ifpr.pgua.eic.mylist.controllers.viewmodels.FuncionarioRow;
 import ifpr.pgua.eic.mylist.controllers.viewmodels.TelaFuncionarioViewModel;
+import ifpr.pgua.eic.mylist.models.results.Result;
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -64,6 +66,10 @@ public class TelaFuncionario extends BaseController implements Initializable {
         tbFuncionarios.setItems(viewModel.getFuncionarios());
 
         viewModel.selecionadoProperty().bind(tbFuncionarios.getSelectionModel().selectedItemProperty());
+
+        viewModel.alertProperty().addListener((ChangeListener<Result>) (observable, oldVal, newVal) -> {
+            showMessage(newVal);
+        });
 
         tfNome.textProperty().bindBidirectional(viewModel.nomeProperty());
         tfNome.editableProperty().bind(viewModel.podeEditarProperty());

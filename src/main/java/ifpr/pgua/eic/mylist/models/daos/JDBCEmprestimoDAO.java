@@ -22,8 +22,6 @@ public class JDBCEmprestimoDAO implements EmprestimoDAO {
 
     private static final String SQL_INSERT = "INSERT INTO pi_emprestimos(idFuncionario,idFerramenta,quantidade,dataEmprestimo,dataDevolucao,status) VALUES (?,?,?,?,?,?)";
     private static final String SQL_SELECT_ALL = "SELECT * FROM pi_emprestimos";
-    private static final String SQL_FUNCIONARIO_BY_ID = "SELECT * FROM pi_funcionarios WHERE id=?";
-    private static final String SQL_FERRAMENTA_BY_ID = "SELECT * FROM pi_ferramentas WHERE id=?";
 
     private FabricaConexoes fabricaConexoes;
 

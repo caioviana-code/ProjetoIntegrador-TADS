@@ -2,6 +2,7 @@ package ifpr.pgua.eic.mylist.controllers.viewmodels;
 
 import ifpr.pgua.eic.mylist.models.entities.Funcionario;
 import ifpr.pgua.eic.mylist.models.repositories.FuncionarioRepository;
+import ifpr.pgua.eic.mylist.models.results.Result;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -25,6 +26,8 @@ public class TelaFuncionarioViewModel {
     private boolean atualizar = false;
 
     private ObjectProperty<FuncionarioRow> selecionado = new SimpleObjectProperty<>();
+
+    private ObjectProperty<Result> alertProperty = new SimpleObjectProperty<>();
 
     private FuncionarioRepository repository;
 
@@ -64,6 +67,10 @@ public class TelaFuncionarioViewModel {
         return selecionado;
     }
 
+    public ObjectProperty<Result> alertProperty() {
+        return alertProperty;
+    }
+
     public void updateList() {
         funcionarios.clear();
         for (Funcionario f: repository.getFuncionarios()) {
@@ -78,8 +85,10 @@ public class TelaFuncionarioViewModel {
 
         if (atualizar) {
             repository.atualizarFuncionario(cpf, telefone);
+            alertProperty.setValue(Result.success("Funcionário atualizado com sucesso"));
         } else {
             repository.adicionarFuncionario(nome, cpf, telefone);
+            alertProperty.setValue(Result.success("Funcionário cadastrado com sucesso"));
         }
 
         updateList();
@@ -103,6 +112,8 @@ public class TelaFuncionarioViewModel {
 
         updateList();
         limpar();
+
+        alertProperty.setValue(Result.success("Funcionário excluido com sucesso"));
     }
 
     public void limpar() {

@@ -38,6 +38,10 @@ public class EmprestimoRepository {
         }
         
         Emprestimo emprestimo = new Emprestimo(funcionario, ferramenta, quantidade, dataEmprestimo, dataDevolucao, status);
+
+        ferramenta.setEstoque(ferramenta.getEstoque() - quantidade);
+        ferramentaDAO.update(ferramenta);
+
         return emprestimoDAO.create(emprestimo);
     }    
 

@@ -107,7 +107,7 @@ public class TelaEmprestimoViewModel {
 
         emprestimoRepository.adicionarEmprestimo(funcionario, ferramenta, quantidade, dataEmprestimo, dataDevolucao, status);
 
-        updateList();
+        updateList(); 
 
         alertProperty.setValue(Result.success("Empréstimo realizado!"));
         return null;

@@ -28,7 +28,6 @@
               </columns>
             </TableView>
             <Button layoutX="138.0" layoutY="117.0" mnemonicParsing="false" text="Emprestar" />
-            <Button layoutX="242.0" layoutY="117.0" mnemonicParsing="false" text="Finalizar" />
             <Button layoutX="856.0" layoutY="117.0" mnemonicParsing="false" text="Limpar" />
             <Button layoutX="330.0" layoutY="117.0" mnemonicParsing="false" text="Devolver" />
             <Button layoutX="740.0" layoutY="117.0" mnemonicParsing="false" text="Ver Detalhes" />

@@ -1,9 +1,6 @@
 package ifpr.pgua.eic.mylist.models.entities;
 
 import java.time.LocalDateTime;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
 
 public class Emprestimo {
     

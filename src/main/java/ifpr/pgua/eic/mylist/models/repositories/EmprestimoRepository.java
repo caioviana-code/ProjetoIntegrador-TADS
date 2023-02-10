@@ -23,4 +23,9 @@ public class EmprestimoRepository {
         this.funcionarioDAO = funcionarioDAO;
         this.ferramentaDAO = ferramentaDAO;
     }
+
+    public Result adicionarEmprestimo(Funcionario funcionario, Ferramenta ferramenta, Integer quantidade, LocalDateTime dataEmprestimo, LocalDateTime dataDevolucao, int status)  {
+        Emprestimo emprestimo = new Emprestimo(funcionario, ferramenta, quantidade, dataEmprestimo, dataDevolucao, quantidade);
+        return emprestimoDAO.create(emprestimo);
+    }    
 }

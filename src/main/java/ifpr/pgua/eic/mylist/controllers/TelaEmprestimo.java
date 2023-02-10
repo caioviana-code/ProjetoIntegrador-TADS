@@ -62,11 +62,11 @@ public class TelaEmprestimo extends BaseController implements Initializable{
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        tbcFuncionario.setCellValueFactory(new PropertyValueFactory<>("Funcionario"));
-        tbcFerramenta.setCellValueFactory(new PropertyValueFactory<>("Ferramenta"));
-        tbcQuantidade.setCellValueFactory(new PropertyValueFactory<>("Quantidade"));
-        tbcDataEmprestimo.setCellValueFactory(new PropertyValueFactory<>("Data Emprestimo"));
-        tbcDataDevolucao.setCellValueFactory(new PropertyValueFactory<>("Data Devolucao"));
+        tbcFuncionario.setCellValueFactory(new PropertyValueFactory<>("funcionario"));
+        tbcFerramenta.setCellValueFactory(new PropertyValueFactory<>("ferramenta"));
+        tbcQuantidade.setCellValueFactory(new PropertyValueFactory<>("quantidade"));
+        tbcDataEmprestimo.setCellValueFactory(new PropertyValueFactory<>("dataEmprestimo"));
+        tbcDataDevolucao.setCellValueFactory(new PropertyValueFactory<>("dataDevolucao"));
 
         tbEmprestimos.setItems(viewModel.getEmprestimos());
 

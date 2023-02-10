@@ -12,24 +12,25 @@
    <children>
       <Pane prefHeight="601.0" prefWidth="1000.0">
          <children>
-            <TextField layoutX="138.0" layoutY="61.0" />
+            <TextField layoutX="138.0" layoutY="61.0" fx:id="tfFuncionario"/>
             <Label layoutX="94.0" layoutY="65.0" text="Cpf:" />
-            <TextField layoutX="439.0" layoutY="61.0" />
-            <TextField layoutX="748.0" layoutY="61.0" />
+            <TextField layoutX="439.0" layoutY="61.0" fx:id="tfFerramenta"/>
+            <TextField layoutX="748.0" layoutY="61.0" fx:id="tfQuantidade"/>
             <Label layoutX="645.0" layoutY="65.0" prefHeight="16.0" prefWidth="103.0" text="Quantidade:" />
             <Label layoutX="352.0" layoutY="65.0" text="Ferramenta:" />
-            <TableView layoutX="82.0" layoutY="168.0" prefHeight="384.0" prefWidth="836.0">
+            <TableView layoutX="82.0" layoutY="168.0" prefHeight="384.0" prefWidth="836.0" fx:id="tbEmprestimos">
               <columns>
-                  <TableColumn prefWidth="160.0" text="Funcionario" />
-                  <TableColumn prefWidth="136.0" text="Ferramenta" />
-                  <TableColumn prefWidth="136.0" text="Quantidade" />
-                  <TableColumn prefWidth="174.0" text="Data Emprestimo" />
-                  <TableColumn prefWidth="168.0" text="Data Devoluçao" />
+                  <TableColumn prefWidth="160.0" text="Funcionario" fx:id="tbcFuncionario"/>
+                  <TableColumn prefWidth="136.0" text="Ferramenta" fx:id="tbcFerramenta"/>
+                  <TableColumn prefWidth="136.0" text="Quantidade" fx:id="tbcQuantidade"/>
+                  <TableColumn prefWidth="174.0" text="Data Emprestimo" fx:id="tbcDataEmprestimo"/>
+                  <TableColumn prefWidth="168.0" text="Data Devoluçao" fx:id="tbcDataDevolucao"/>
               </columns>
             </TableView>
-            <Button layoutX="138.0" layoutY="117.0" mnemonicParsing="false" text="Emprestar" />
-            <Button layoutX="856.0" layoutY="117.0" mnemonicParsing="false" text="Limpar" />
-            <Button layoutX="330.0" layoutY="117.0" mnemonicParsing="false" text="Devolver" />
+            <Button layoutX="138.0" layoutY="117.0" mnemonicParsing="false" text="Emprestar" onAction="#cadastrar"/>
+            <Button layoutX="856.0" layoutY="117.0" mnemonicParsing="false" text="Limpar"/>
+            <Button layoutX="330.0" layoutY="117.0" mnemonicParsing="false" text="Devolver"/>
+         </children>
       </Pane>
    </children>
 </VBox>

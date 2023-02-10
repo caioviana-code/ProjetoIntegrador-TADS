@@ -14,6 +14,7 @@
       <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="155.0" spacing="10.0">
          <Button onAction="#carregarTelaFerramenta" prefHeight="40.0" prefWidth="120.0" text="Ferramentas" />
          <Button onAction="#carregarTelaFuncionario" prefHeight="40.0" prefWidth="120.0" text="Funcionários"/>
+         <Button onAction="#carregarTelaEmprestimo" prefHeight="40.0" prefWidth="120.0" text="Empréstimos"/>
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>

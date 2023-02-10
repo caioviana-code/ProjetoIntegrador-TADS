@@ -32,7 +32,7 @@ public class JDBCEmprestimoDAO implements EmprestimoDAO {
             prep_Statement.setInt(2, emprestimo.getFerramenta().getId());
             prep_Statement.setInt(3, emprestimo.getQuantidade());
             prep_Statement.setTimestamp(4, Timestamp.valueOf(emprestimo.getDataEmprestimo()));
-            prep_Statement.setTimestamp(5, Timestamp.valueOf(emprestimo.getDataDevolucao()));
+            prep_Statement.setTimestamp(5, null);
             prep_Statement.setInt(6, emprestimo.getStatus());
 
             prep_Statement.execute();

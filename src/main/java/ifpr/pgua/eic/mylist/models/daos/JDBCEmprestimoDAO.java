@@ -57,14 +57,14 @@ public class JDBCEmprestimoDAO implements EmprestimoDAO {
     }
 
     @Override
-    public Result update(int id) {
+    public Result update(Emprestimo emprestimo) {
         try {
             Connection con = fabricaConexoes.getConnection();
             PreparedStatement prep_Statement = con.prepareStatement(SQL_UPDATE);
 
             prep_Statement.setInt(1, 2);
             prep_Statement.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
-            prep_Statement.setInt(3, id);
+            prep_Statement.setInt(3, emprestimo.getId());
 
             prep_Statement.execute();
 

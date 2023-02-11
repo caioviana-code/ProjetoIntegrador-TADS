@@ -111,7 +111,7 @@ public class TelaEmprestimoViewModel {
 
     public void devolver() {
         Emprestimo emprestimo = selecionado.get().getEmprestimo();
-        emprestimoRepository.devolverEmprestimo(emprestimo.getId());
+        emprestimoRepository.devolverEmprestimo(emprestimo);
         updateList();
         limpar();
         alertProperty.setValue(Result.success("Empréstimo devolvido!"));

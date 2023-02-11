@@ -1,6 +1,9 @@
 package ifpr.pgua.eic.mylist.controllers.viewmodels;
 
+import java.util.List;
+
 import ifpr.pgua.eic.mylist.App;
+import ifpr.pgua.eic.mylist.models.entities.Usuario;
 import ifpr.pgua.eic.mylist.models.repositories.UsuarioRepository;
 import ifpr.pgua.eic.mylist.models.results.Result;
 import javafx.beans.property.ObjectProperty;
@@ -38,8 +41,24 @@ public class TelaCadastroViewModel {
         return alertProperty;
     }
 
-    public void cadastro() {
+    public Result cadastro() {
+
+        List<Usuario> usuarios = repository.getUsuarios();
+
+        String login = loginProperty.getValue();
+        String senha = senhaProperty.getValue();
+        String email = emailProperty.getValue();
+
+        for (Usuario u : usuarios) {
+            if (u.getLogin().equals(login) || u.getEmail().equals(email)) {
+                alertProperty.setValue(Result.success("Usuário já cadastrado"));
+                return null;
+            }
+        }
+
+        repository.adicionarUsuario(login, senha, email);
         alertProperty.set(Result.success("Usuário cadastrado!"));
         App.pushScreen("LOGIN");
+        return null;
     }
 }

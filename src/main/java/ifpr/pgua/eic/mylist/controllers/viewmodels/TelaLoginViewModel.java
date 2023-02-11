@@ -1,6 +1,9 @@
 package ifpr.pgua.eic.mylist.controllers.viewmodels;
 
+import java.util.List;
+
 import ifpr.pgua.eic.mylist.App;
+import ifpr.pgua.eic.mylist.models.entities.Usuario;
 import ifpr.pgua.eic.mylist.models.repositories.UsuarioRepository;
 import ifpr.pgua.eic.mylist.models.results.Result;
 import ifpr.pgua.eic.mylist.utils.Navigator.BorderPaneRegion;
@@ -34,10 +37,23 @@ public class TelaLoginViewModel {
         return alertProperty;
     }
 
-    public void entrar() {
+    public Result entrar() {
 
-        alertProperty.setValue(Result.success("Login efetuado com sucesso!"));
-        App.pushScreen("PRINCIPAL");
+        List<Usuario> usuarios = repository.getUsuarios();
+
+        String login = loginProperty.getValue();
+        String senha = senhaProperty.getValue();
+
+        for (Usuario u : usuarios) {
+            if (u.getLogin().equals(login) && u.getSenha().equals(senha)) {
+                alertProperty.setValue(Result.success("Login efetuado com sucesso!"));
+                App.pushScreen("PRINCIPAL");
+                return null;
+            }
+        }
+
+        alertProperty.setValue(Result.success("Usuário não encontrado!"));
+        return null;
     }
 
     public void cadastro() {

@@ -33,3 +33,4 @@ Semana 06/02/2023 = 12/02/2023
 - caso de uso manter emprestimos concluido
 - Criação da classe Usuario
 - Criação do DAO de Usuario
+- Criação do Repository da classe Usuario

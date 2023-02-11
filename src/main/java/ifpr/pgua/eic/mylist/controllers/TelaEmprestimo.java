@@ -14,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 public class TelaEmprestimo extends BaseController implements Initializable{
 
@@ -79,6 +80,8 @@ public class TelaEmprestimo extends BaseController implements Initializable{
         tfFerramenta.textProperty().bindBidirectional(viewModel.ferramentaProperty());
 
         tfQuantidade.textProperty().bindBidirectional(viewModel.quantidadeProperty());
+
+        btDevolver.disableProperty().bind(viewModel.desativadoProperty());
         
         viewModel.updateList();
     }
@@ -87,5 +90,21 @@ public class TelaEmprestimo extends BaseController implements Initializable{
     private void cadastrar() {
         viewModel.cadastrar();
     }
+
+    @FXML
+    private void atualizar(MouseEvent event) {
+        if (event.getClickCount() == 2) {
+            viewModel.atualizar();
+        }
+    }
+
+    @FXML
+    private void devolver() {
+        viewModel.devolver();
+    }
     
+    @FXML
+    private void limpar() {
+        viewModel.limpar();
+    }
 }

@@ -27,7 +27,6 @@ public class TelaEmprestimoViewModel {
 
     private ObservableList<EmprestimoRow> emprestimos = FXCollections.observableArrayList();
 
-    private BooleanProperty podeEditar = new SimpleBooleanProperty(true);
     private BooleanProperty desativado = new SimpleBooleanProperty(true);
 
     private ObjectProperty<EmprestimoRow> selecionado = new SimpleObjectProperty<>();
@@ -58,10 +57,6 @@ public class TelaEmprestimoViewModel {
 
     public ObservableList<EmprestimoRow> getEmprestimos() {
         return emprestimos;
-    }
-
-    public BooleanProperty podeEditarProperty() {
-        return podeEditar;
     }
 
     public BooleanProperty desativadoProperty() {
@@ -108,9 +103,29 @@ public class TelaEmprestimoViewModel {
         emprestimoRepository.adicionarEmprestimo(funcionario, ferramenta, quantidade, dataEmprestimo, dataDevolucao, status);
 
         updateList(); 
+        limpar();
 
         alertProperty.setValue(Result.success("Empréstimo realizado!"));
         return null;
     } 
+
+    public void devolver() {
+        Emprestimo emprestimo = selecionado.get().getEmprestimo();
+        emprestimoRepository.devolverEmprestimo(emprestimo.getId());
+        updateList();
+        limpar();
+        alertProperty.setValue(Result.success("Empréstimo devolvido!"));
+    }
+
+    public void atualizar() {
+        desativado.setValue(false);
+    }
+
+    public void limpar() {
+        funcionarioProperty.setValue("");
+        ferramentaProperty.setValue("");
+        quantidadeProperty.set("");
+        desativado.setValue(true);
+    }
 
 }

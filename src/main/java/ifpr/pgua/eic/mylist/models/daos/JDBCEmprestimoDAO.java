@@ -21,6 +21,7 @@ import ifpr.pgua.eic.mylist.models.results.Result;
 public class JDBCEmprestimoDAO implements EmprestimoDAO {
 
     private static final String SQL_INSERT = "INSERT INTO pi_emprestimos(idFuncionario,idFerramenta,quantidade,dataEmprestimo,dataDevolucao,status) VALUES (?,?,?,?,?,?)";
+    private static final String SQL_UPDATE = "UPDATE pi_emprestimos SET status=?, dataDevolucao=? WHERE id=?";
     private static final String SQL_SELECT_ALL = "SELECT * FROM pi_emprestimos";
 
     private FabricaConexoes fabricaConexoes;
@@ -48,6 +49,29 @@ public class JDBCEmprestimoDAO implements EmprestimoDAO {
             con.close();
 
             return Result.success("Empréstimo bem sucedido");
+
+        } catch (SQLException err) {
+            System.out.println(err.getMessage());
+            return Result.fail(err.getMessage());
+        }
+    }
+
+    @Override
+    public Result update(int id) {
+        try {
+            Connection con = fabricaConexoes.getConnection();
+            PreparedStatement prep_Statement = con.prepareStatement(SQL_UPDATE);
+
+            prep_Statement.setInt(1, 2);
+            prep_Statement.setTimestamp(2, Timestamp.valueOf(LocalDateTime.now()));
+            prep_Statement.setInt(3, id);
+
+            prep_Statement.execute();
+
+            prep_Statement.close();
+            con.close();
+
+            return Result.success("Empréstimo devolvido com sucesso");
 
         } catch (SQLException err) {
             System.out.println(err.getMessage());
@@ -83,7 +107,9 @@ public class JDBCEmprestimoDAO implements EmprestimoDAO {
 
             while (result.next()) {
                 Emprestimo emprestimo = buildFrom(result);
-                lista.add(emprestimo);
+                if (emprestimo.getStatus() == 1) {
+                    lista.add(emprestimo);
+                }
             }
 
             result.close();
@@ -97,5 +123,5 @@ public class JDBCEmprestimoDAO implements EmprestimoDAO {
             return Collections.emptyList();
         }
     }
-    
+
 }

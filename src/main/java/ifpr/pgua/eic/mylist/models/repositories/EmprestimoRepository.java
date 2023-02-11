@@ -43,7 +43,11 @@ public class EmprestimoRepository {
         ferramentaDAO.update(ferramenta);
 
         return emprestimoDAO.create(emprestimo);
-    }    
+    }  
+    
+    public Result devolverEmprestimo(int id) {
+        return emprestimoDAO.update(id);
+    }
 
     private Funcionario carregaFuncionarioEmprestimo(int id) {
         return funcionarioDAO.getFuncionarioFromEmprestimo(id);

@@ -7,5 +7,6 @@ import ifpr.pgua.eic.mylist.models.results.Result;
 
 public interface EmprestimoDAO {
     Result create(Emprestimo emprestimo);
+    Result update(int id);
     List<Emprestimo> listAll();
 }

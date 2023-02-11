@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.mylist.controllers.TelaLogin">
    <children>
       <TextField fx:id="tfLogin" layoutX="415.0" layoutY="246.0" promptText="Digite seu cpf..." />
@@ -25,7 +24,7 @@
             <Font size="9.0" />
          </font>
       </Label>
-      <Button fx:id="btCadastro" layoutX="519.0" layoutY="405.0" mnemonicParsing="false" text="Cadastre-se" onAction="#cadastro">
+      <Button layoutX="519.0" layoutY="405.0" mnemonicParsing="false" onAction="#cadastro" text="Cadastre-se">
          <font>
             <Font size="9.0" />
          </font>

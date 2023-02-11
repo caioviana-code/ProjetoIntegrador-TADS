@@ -8,27 +8,27 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.mylist.controllers.TelaEmprestimo">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.mylist.controllers.TelaEmprestimo">
    <children>
       <Pane prefHeight="601.0" prefWidth="1000.0">
          <children>
-            <TextField layoutX="138.0" layoutY="61.0" fx:id="tfFuncionario"/>
+            <TextField fx:id="tfFuncionario" layoutX="138.0" layoutY="61.0" />
             <Label layoutX="94.0" layoutY="65.0" text="Cpf:" />
-            <TextField layoutX="439.0" layoutY="61.0" fx:id="tfFerramenta"/>
-            <TextField layoutX="748.0" layoutY="61.0" fx:id="tfQuantidade"/>
+            <TextField fx:id="tfFerramenta" layoutX="439.0" layoutY="61.0" />
+            <TextField fx:id="tfQuantidade" layoutX="748.0" layoutY="61.0" />
             <Label layoutX="645.0" layoutY="65.0" prefHeight="16.0" prefWidth="103.0" text="Quantidade:" />
             <Label layoutX="352.0" layoutY="65.0" text="Ferramenta:" />
-            <TableView layoutX="82.0" layoutY="168.0" prefHeight="384.0" prefWidth="836.0" fx:id="tbEmprestimos" onMouseClicked="#atualizar">
+            <TableView fx:id="tbEmprestimos" layoutX="196.0" layoutY="167.0" onMouseClicked="#atualizar" prefHeight="384.0" prefWidth="608.0">
               <columns>
-                  <TableColumn prefWidth="160.0" text="Funcionario" fx:id="tbcFuncionario"/>
-                  <TableColumn prefWidth="136.0" text="Ferramenta" fx:id="tbcFerramenta"/>
-                  <TableColumn prefWidth="136.0" text="Quantidade" fx:id="tbcQuantidade"/>
-                  <TableColumn prefWidth="174.0" text="Data Emprestimo" fx:id="tbcDataEmprestimo"/>
+                  <TableColumn fx:id="tbcFuncionario" prefWidth="160.0" text="Funcionario" />
+                  <TableColumn fx:id="tbcFerramenta" prefWidth="136.0" text="Ferramenta" />
+                  <TableColumn fx:id="tbcQuantidade" prefWidth="136.0" text="Quantidade" />
+                  <TableColumn fx:id="tbcDataEmprestimo" prefWidth="174.0" text="Data Emprestimo" />
               </columns>
             </TableView>
-            <Button layoutX="138.0" layoutY="117.0" mnemonicParsing="false" text="Emprestar" fx:id="btCadastrar" onAction="#cadastrar"/>
-            <Button layoutX="856.0" layoutY="117.0" mnemonicParsing="false" text="Limpar" fx:id="btLimpar" onAction="#limpar"/>
-            <Button layoutX="330.0" layoutY="117.0" mnemonicParsing="false" text="Devolver" fx:id="btDevolver" onAction="#devolver"/>
+            <Button fx:id="btCadastrar" layoutX="196.0" layoutY="117.0" mnemonicParsing="false" onAction="#cadastrar" text="Emprestar" />
+            <Button fx:id="btLimpar" layoutX="740.0" layoutY="117.0" mnemonicParsing="false" onAction="#limpar" text="Limpar" />
+            <Button fx:id="btDevolver" layoutX="300.0" layoutY="117.0" mnemonicParsing="false" onAction="#devolver" text="Devolver" />
          </children>
       </Pane>
    </children>

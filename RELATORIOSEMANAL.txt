@@ -28,3 +28,8 @@ Semana 06/02/2023 = 12/02/2023
 
 - Criação do DAO da classe Emprestimo
 - Criação do Repository da classe Emprestimo
+- Criação da tela de Emprestimo
+- criação da ViewModel de Emprestimo
+- caso de uso manter emprestimos concluido
+- Criação da classe Usuario
+- Criação do DAO de Usuario

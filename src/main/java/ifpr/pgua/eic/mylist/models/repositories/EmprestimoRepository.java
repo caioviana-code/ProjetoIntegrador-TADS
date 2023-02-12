@@ -47,8 +47,7 @@ public class EmprestimoRepository {
     
     public Result devolverEmprestimo(Emprestimo emprestimo) {
 
-        if (emprestimo == null) {
-            return Result.fail("Empréstimo inválido!");
+        if (emprestimo == null) {            return Result.fail("Empréstimo inválido!");
         }
 
         Ferramenta ferramenta = emprestimo.getFerramenta();

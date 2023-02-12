@@ -78,10 +78,15 @@ public class TelaFuncionarioViewModel {
         }
     }
 
-    public void cadastrar() {
+    public Result cadastrar() {
         String nome = nomeProperty.getValue();
         String cpf = cpfProperty.getValue();
         String telefone = telefoneProperty.getValue();
+
+        if (nome == null || cpf == null || telefone == null) {
+            alertProperty.setValue(Result.fail("Dados inválidos"));
+            return null;
+        }
 
         if (atualizar) {
             repository.atualizarFuncionario(cpf, telefone);
@@ -93,6 +98,7 @@ public class TelaFuncionarioViewModel {
 
         updateList();
         limpar();
+        return null;
     }
 
     public void atualizar() {

@@ -18,6 +18,11 @@ public class FerramentaRepository {
     }
 
     public Result adicionarFerramenta(String nome, int estoque) {
+
+        if (nome == null || estoque < 0) {
+            return Result.fail("Preencha os campos corretamente");
+        }
+
         Ferramenta ferramenta = new Ferramenta(nome, estoque);
         return dao.create(ferramenta);
     }

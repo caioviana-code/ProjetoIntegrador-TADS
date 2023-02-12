@@ -18,6 +18,11 @@ public class FuncionarioRepository {
     }
 
     public Result adicionarFuncionario(String nome, String cpf, String telefone) {
+
+        if (nome == null || cpf == null || telefone == null) {
+            return Result.fail("Dados inválidos");
+        }
+
         Funcionario funcionario = new Funcionario(nome, cpf, telefone);
         return dao.create(funcionario);
     }

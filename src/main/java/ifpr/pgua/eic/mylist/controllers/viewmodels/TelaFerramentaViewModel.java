@@ -73,11 +73,15 @@ public class TelaFerramentaViewModel {
         }
     }
 
-    public void cadastrar() {
+    public Result cadastrar() {
         String nome = nomeProperty.getValue();
         String str_estoque = estoqueProperty.getValue();
-
         int estoque = Integer.parseInt(str_estoque);
+
+        if (nome == null || estoque < 0) {
+            alertProperty.setValue(Result.fail("Preencha os campos corretamente"));
+            return null;
+        }
 
         if (atualizar) {
             repository.atualizarFerramenta(nome, estoque);
@@ -89,6 +93,7 @@ public class TelaFerramentaViewModel {
 
         updateList();
         limpar();
+        return null;
 
     }
 

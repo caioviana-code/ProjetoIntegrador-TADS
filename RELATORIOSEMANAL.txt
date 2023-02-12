@@ -4,25 +4,23 @@ Semana 09/01/2023 - 15/01/2023
 - Criação do DAO da classe Ferramenta
 - Criação do Repository da classe Ferramenta
 - Criação da ViewModel da telaFerramenta
-- Cadastro de ferramente no banco de dados concluido
+- Cadastro de Ferramenta no banco de dados concluido
 
 Semana 16/01/2023 - 22/01/2023
 
-- Caso de uso visualizar ferramentas concluido
-- Caso de uso atualizar ferramenta concluido
-- Caso de uso exluir ferramenta concluido
+- Visualizar ferramentas concluido
+- Atualizar ferramenta concluido
+- Exluir ferramenta concluido
 
 Semana 23/01/2023 - 29/01/2023
 
 - Criaçao da classe Funcionario
 - Criação do DAO da classe Funcionario
 - Criação do Repository da classe Funcionario
-- Criação da tela de cadastro e visualização de funcionários
-- Caso de uso visualizar funcionários concluido
-- Caso de uso atualizar funcionários concluido
-- Caso de uso exluir funcionários concluido
+- Criação da tela de Funcionarios
+- Atualizar funcionarios concluido
+- Exluir funcionarios concluido
 - Criação da classe Emprestimo
-- Criação da classe ItemEmprestimo
 
 Semana 06/02/2023 = 12/02/2023
 
@@ -30,7 +28,7 @@ Semana 06/02/2023 = 12/02/2023
 - Criação do Repository da classe Emprestimo
 - Criação da tela de Emprestimo
 - criação da ViewModel de Emprestimo
-- caso de uso manter emprestimos concluido
+- Manter emprestimos concluido
 - Criação da classe Usuario
 - Criação do DAO de Usuario
 - Criação do Repository da classe Usuario
@@ -40,3 +38,4 @@ Semana 06/02/2023 = 12/02/2023
 - Criação da ViewModel da tela de cadastro
 - Cadastro de usuarios finalizado
 - Validação de login finalizada
+- Estilização com CSS concluida

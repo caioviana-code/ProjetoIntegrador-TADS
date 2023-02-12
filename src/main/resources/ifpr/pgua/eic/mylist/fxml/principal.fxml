@@ -5,13 +5,14 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="600" prefWidth="1000" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.mylist.controllers.TelaPrincipal">
+<BorderPane prefHeight="600" prefWidth="1000" stylesheets="@styles/geral.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.mylist.controllers.TelaPrincipal">
 
    <left>
       <VBox alignment="CENTER" prefHeight="600.0" prefWidth="155.0" spacing="30.0">
          <Button onAction="#carregarTelaFerramenta" prefHeight="40.0" prefWidth="120.0" text="Ferramentas" />
          <Button onAction="#carregarTelaFuncionario" prefHeight="40.0" prefWidth="120.0" text="Funcionários" />
          <Button onAction="#carregarTelaEmprestimo" prefHeight="40.0" prefWidth="120.0" text="Empréstimos" />
+         <Button fx:id="btVoltar" mnemonicParsing="false" onAction="#voltar" text="Logout" styleClass="button-voltar"/>
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>

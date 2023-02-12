@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.mylist.controllers.TelaFerramenta">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"  stylesheets="@styles/geral.css" fx:controller="ifpr.pgua.eic.mylist.controllers.TelaFerramenta">
    <children>
       <Pane prefHeight="618.0" prefWidth="800.0">
          <children>
@@ -20,7 +20,7 @@
               </columns>
             </TableView>
             <Button fx:id="btCadastrar" layoutX="319.0" layoutY="101.0" mnemonicParsing="false" onAction="#cadastrar" text="Cadastrar" />
-            <Button fx:id="btExcluir" layoutX="659.0" layoutY="101.0" mnemonicParsing="false" onAction="#excluir" prefHeight="24.0" prefWidth="82.0" text="Excluir" />
+            <Button fx:id="btExcluir" layoutX="659.0" layoutY="101.0" mnemonicParsing="false" onAction="#excluir" prefHeight="24.0" prefWidth="82.0" text="Excluir" styleClass="button-excluir"/>
             <TextField fx:id="tfNome" layoutX="62.0" layoutY="149.0" promptText="Nome da ferramenta..." />
             <TextField fx:id="tfEstoque" layoutX="62.0" layoutY="214.0" promptText="Digite a quantidade..." />
             <Label layoutX="62.0" layoutY="125.0" text="Nome:" />

@@ -109,12 +109,19 @@ public class TelaEmprestimoViewModel {
         return null;
     } 
 
-    public void devolver() {
-        Emprestimo emprestimo = selecionado.get().getEmprestimo();
-        emprestimoRepository.devolverEmprestimo(emprestimo);
-        updateList();
-        limpar();
-        alertProperty.setValue(Result.success("Empréstimo devolvido!"));
+    public Result devolver() {
+        try {
+            Emprestimo emprestimo = selecionado.get().getEmprestimo();
+            emprestimoRepository.devolverEmprestimo(emprestimo);
+            updateList();
+            limpar();
+            alertProperty.setValue(Result.success("Empréstimo devolvido!"));
+            return null;
+        } catch (NullPointerException err) {
+            alertProperty.setValue(Result.success("Nenhum empréstimo selecionado"));
+            return null;
+        }
+
     }
 
     public void atualizar() {

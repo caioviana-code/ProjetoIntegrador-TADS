@@ -48,7 +48,7 @@ public class FerramentaRepository {
     public Ferramenta getFerramentaByNome(String nome) {
         Ferramenta ferramenta = null;
         for (Ferramenta f : ferramentas) {
-            if (f.getNome().equals(nome)) {
+            if (f.getNome().equalsIgnoreCase(nome)) {
                 ferramenta = f;
             }
         }

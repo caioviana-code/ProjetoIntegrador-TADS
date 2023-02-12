@@ -27,6 +27,8 @@ public class TelaCadastro extends BaseController implements Initializable {
     @FXML
     private Button btCadastro;
 
+    @FXML 
+    private Button btVoltar;
 
     private TelaCadastroViewModel viewModel;
 
@@ -50,6 +52,10 @@ public class TelaCadastro extends BaseController implements Initializable {
 
     @FXML void cadastro() {
         viewModel.cadastro();
+    }
+
+    @FXML void voltar() {
+        viewModel.voltar();
     }
     
 }

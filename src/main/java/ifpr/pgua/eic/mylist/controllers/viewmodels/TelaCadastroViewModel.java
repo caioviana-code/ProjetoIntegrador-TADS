@@ -49,6 +49,11 @@ public class TelaCadastroViewModel {
         String senha = senhaProperty.getValue();
         String email = emailProperty.getValue();
 
+        if (login == null || senha == null || email == null) {
+            alertProperty.setValue(Result.fail("Preencha os campos corretamente!"));
+            return null;
+        }
+
         for (Usuario u : usuarios) {
             if (u.getLogin().equals(login) || u.getEmail().equals(email)) {
                 alertProperty.setValue(Result.success("Usuário já cadastrado"));
@@ -60,5 +65,9 @@ public class TelaCadastroViewModel {
         alertProperty.set(Result.success("Usuário cadastrado!"));
         App.pushScreen("LOGIN");
         return null;
+    }
+
+    public void voltar() {
+        App.pushScreen("LOGIN");
     }
 }

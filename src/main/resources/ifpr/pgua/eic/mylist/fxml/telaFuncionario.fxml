@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifpr.pgua.eic.mylist.controllers.TelaFuncionario">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"  stylesheets="@styles/geral.css" fx:controller="ifpr.pgua.eic.mylist.controllers.TelaFuncionario">
    <children>
       <Pane prefHeight="616.0" prefWidth="800.0">
          <children>
@@ -21,7 +21,7 @@
             </TableView>
             <Button fx:id="btCadastrar" layoutX="54.0" layoutY="120.0" mnemonicParsing="false" onAction="#cadastrar" text="Cadastrar" />
             <Button fx:id="btLimpar" layoutX="146.0" layoutY="120.0" mnemonicParsing="false" onAction="#limpar" text="Limpar" />
-            <Button fx:id="btExcluir" layoutX="684.0" layoutY="120.0" mnemonicParsing="false" onAction="#excluir" text="Excluir" />
+            <Button fx:id="btExcluir" layoutX="684.0" layoutY="120.0" mnemonicParsing="false" onAction="#excluir" text="Excluir" styleClass="button-excluir"/>
             <TextField fx:id="tfNome" layoutX="51.0" layoutY="64.0" promptText="Digite o nome..." />
             <TextField fx:id="tfCpf" layoutX="315.0" layoutY="64.0" promptText="Digite o cpf..." />
             <TextField fx:id="tfTelefone" layoutX="575.0" layoutY="64.0" promptText="Digite o telefone..." />

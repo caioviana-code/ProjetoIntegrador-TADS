@@ -22,7 +22,7 @@ public class TelaPrincipal extends BaseController {
     }
 
     @FXML
-    private void carregaTelaLogin() {
-        App.changeScreenRegion("LOGIN", BorderPaneRegion.CENTER);
+    private void voltar() {
+        App.pushScreen("LOGIN");
     }
 }

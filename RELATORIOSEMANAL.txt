@@ -38,3 +38,5 @@ Semana 06/02/2023 = 12/02/2023
 - Criação da ViewModel da tela de login
 - Criação da tela de cadastro
 - Criação da ViewModel da tela de cadastro
+- Cadastro de usuarios finalizado
+- Validação de login finalizada

@@ -109,7 +109,7 @@ public class TelaFerramentaViewModel {
         updateList();
         limpar();
 
-        alertProperty.setValue(Result.success("Ferramenta exlcuida com sucesso"));
+        alertProperty.setValue(Result.success("Ferramenta excluida com sucesso"));
     }
 
     public void limpar() {

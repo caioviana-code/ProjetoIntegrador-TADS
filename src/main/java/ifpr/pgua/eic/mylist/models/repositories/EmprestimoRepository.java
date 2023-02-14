@@ -69,8 +69,14 @@ public class EmprestimoRepository {
         emprestimos = emprestimoDAO.listAll();
 
         for (Emprestimo emprestimo : emprestimos) {
-            emprestimo.setFuncionario(carregaFuncionarioEmprestimo(emprestimo.getId()));
-            emprestimo.setFerramenta(carregaFerramentaEmprestimo(emprestimo.getId()));
+            Funcionario funcionario = carregaFuncionarioEmprestimo(emprestimo.getId());
+            Ferramenta ferramenta = carregaFerramentaEmprestimo(emprestimo.getId());
+            if (funcionario != null && ferramenta != null) {
+                emprestimo.setFuncionario(funcionario);
+                emprestimo.setFerramenta(ferramenta);
+            } else {
+                emprestimoDAO.update(emprestimo);
+            }
         }
 
         return Collections.unmodifiableList(emprestimos);

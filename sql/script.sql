@@ -15,15 +15,13 @@ CREATE TABLE IF NOT EXISTS pi_funcionarios (
 
 CREATE TABLE IF NOT EXISTS pi_emprestimos (
     id int AUTO_INCREMENT,
-    idFuncionario int NOT NULL,
-    idFerramenta int NOT NULL,
+    idFuncionario int NULL,
+    idFerramenta int NULL,
     quantidade int NOT NULL,
     dataEmprestimo TIMESTAMP NOT NULL,
     dataDevolucao TIMESTAMP NULL,
     status int NOT NULL,
-    PRIMARY KEY (id),
-    CONSTRAINT emprestimos_FK_funcionario FOREIGN KEY (idFuncionario) REFERENCES pi_funcionarios (id),
-    CONSTRAINT emprestimos_FK_ferramenta FOREIGN KEY (idFerramenta) REFERENCES pi_ferramentas (id)
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS pi_usuarios (
@@ -33,3 +31,8 @@ CREATE TABLE IF NOT EXISTS pi_usuarios (
     email varchar(100) NOT NULL,
     PRIMARY KEY (id)
 );
+
+drop TABLE pi_emprestimos;
+drop TABLE pi_usuarios;
+drop TABLE pi_funcionarios; 
+drop TABLE pi_ferramentas
